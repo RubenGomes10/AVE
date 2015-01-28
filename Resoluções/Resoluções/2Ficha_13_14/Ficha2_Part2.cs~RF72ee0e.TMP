@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Resoluções._2Ficha_13_14
+{
+
+    public class TestClass
+    {
+        [DumperValue(new Formarter("int"))]
+        private string fieldText;
+
+        private int fieldText2;
+
+        public TestClass()
+        {
+            this.Text = "Teste GetValues";
+        }
+
+        public string Text { get; set; }
+
+        [DumperValue(new Formarter("string"))]
+        public int SomeInt { get; set; }
+
+        [DumperValue(new Formarter("int"))]
+        public double SomeDouble { get; set; }
+    }
+
+    class Pair<T1, T2>
+    {
+
+        public Pair(T1 t1, T2 t2)
+        {
+            this.Obj1 = t1;
+            this.Obj2 = t2;
+        }
+
+        public T1 Obj1 { get; set; }
+        public T2 Obj2 { get; set; }
+    }
+
+    [AttributeUsage(AttributeTargets.Parameter|AttributeTargets.Field)]
+    class DumperValueAttribute : Attribute
+    {
+        private Formarter format;
+
+        public DumperValueAttribute(Formarter format)
+        {
+            this.format = format;
+        }
+
+        public Formarter Formart { get { return format; } }
+        
+    }
+
+
+    class Formarter : IFormatter{
+
+        public Formarter(string formatTo)
+        {
+            this.FormatTo = formatTo;
+        }
+
+        public string FormatTo { get; set; }
+    }
+
+    public class MAinClass{
+
+        public static IEnumerable<Pair<string, object>> GetValues(object obj)
+        {
+            Type obj1 = obj.GetType();
+
+            //for fields
+            foreach (FieldInfo fi in obj1.GetFields())
+                if (fi.GetCustomAttributes() is DumperValueAttribute)
+                    yield return new Pair<string, object>(fi.Name, fi.GetValue(obj1));
+
+            //for Prop
+            foreach (PropertyInfo pi in obj1.GetProperties())
+                if (pi.GetCustomAttributes() is DumperValueAttribute)
+                    yield return new Pair<string, object>(pi.Name, pi.GetValue(obj1));
+        }
+
+
+        static void Main(){
+
+            //Teste GetValues
+            TestClass text = new TestClass();
+
+            IEnumerable<Pair<string, object>> e = GetValues(text);
+
+            IEnumerator<Pair<string, object>> it = e.GetEnumerator();
+
+            while (it.MoveNext())
+                Console.WriteLine(it.Current);
+
+        }
+    }
+
+}
+
+
+
+
+

@@ -97,7 +97,8 @@ namespace Resoluções._2Ficha_13_14
         }
             
         
-
+       //Main
+        /*
         static void Main()
         {
             //1
@@ -144,22 +145,27 @@ namespace Resoluções._2Ficha_13_14
 
             string test = "Sucess,Test,Split",
                    test2 = "Teste Bem sucedido";
+           
             IEnumerable<string> split =  Split(test, ','),
                                 split2 = Split(test2, ' ' ); 
             
+            //teste foreach
             foreach (string s in split) 
                 Console.WriteLine(s);
 
             foreach (string s in split2)
                 Console.WriteLine(s);
 
-
+            // Teste enumerator
+            IEnumerator<string> it = split.GetEnumerator();
+            while (it.MoveNext())
+                Console.WriteLine(it.Current);
 
  
         
         }
-
+        */
     }
-
+    
 
 }

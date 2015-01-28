@@ -11,7 +11,7 @@ namespace Resoluções._2Ficha_13_14
 
     public class TestClass
     {
-        [DumperValue("int"),]
+        [DumperValue(Format = "int"),]
         public readonly string fieldText = "Test BindTo Sucess";
 
         public int fieldText2;
@@ -23,10 +23,10 @@ namespace Resoluções._2Ficha_13_14
 
         public string Text { get; set; }
 
-        [DumperValue("string")]
+        [DumperValue()]
         public int SomeInt { get; set; }
 
-        [DumperValue("int")]
+        [DumperValue(Format = "int")]
         public double SomeDouble { get; set; }
 
       
@@ -60,12 +60,12 @@ namespace Resoluções._2Ficha_13_14
     class DumperValueAttribute : Attribute
     {
 
-        public DumperValueAttribute(String format)
+        public DumperValueAttribute()
         {
-            this.Format = new Formarter(format);
+            this.Format = "String";
         }
 
-        public Formarter Format { get; set; }
+        public String Format { get; set; }
         
     }
 

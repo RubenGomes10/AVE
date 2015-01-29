@@ -54,6 +54,20 @@ namespace Resoluções._2Ficha_13_14
         //solucçao
         private MyHandler observer;
 
+        //if default event c#, default add and remove
+       /* public void Simulate()
+        {
+            if (MyEvent != null)
+                MyEvent();
+        }
+       */
+        //trigger event
+        public void Simulate()
+        {
+            if (observer != null)
+                observer();
+        }
+        
     }
 
         
@@ -133,7 +147,7 @@ namespace Resoluções._2Ficha_13_14
             //6
             A a = new A();
             a.MyEvent += Handlers.Foo; // StackOverFlowException-- ao adicionar ele chama novamente recursividade infinita
-             
+            a.Simulate(); 
             //7
             h = new MyHandler(new Handlers().FooA3); //A
             h+= new MyHandler(Handlers.FooB); //A e B

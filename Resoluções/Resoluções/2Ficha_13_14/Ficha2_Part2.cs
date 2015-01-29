@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Resoluções._2Ficha_13_14
 {
-
+    #region Class For GetValues
     public class TestClass
     {
         [DumperValue(Format = "int"),]
@@ -125,7 +125,10 @@ namespace Resoluções._2Ficha_13_14
             }
         }
     }
-
+    #endregion
+    
+    #region testClassFor BindTo
+    
     public class TestClassBindTo
     {
         public string fieldText;
@@ -134,8 +137,11 @@ namespace Resoluções._2Ficha_13_14
 
         public double SomeDouble { get; set; }
     }
+    
+    #endregion
+    
 
-     static class MAinClass{
+    static class MAinClass{
 
         public static IEnumerable<Pair<string, object>> GetValues(object obj)
         {

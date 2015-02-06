@@ -58,8 +58,11 @@ namespace SV_12_13_1Teste
         {
             add
             {
+                
                 Console.WriteLine("Regist {0} on A", value.Method.Name);
+                
                 MaxLevelDelegate += value;
+                Console.WriteLine("Number of observers {0}", MaxLevelDelegate.GetInvocationList().Length);
             }
 
             remove
@@ -197,8 +200,9 @@ namespace SV_12_13_1Teste
                    Type obj1 = obj.GetType();
 
                    foreach (MemberInfo mf in obj1.GetMembers())
-                       foreach (object attribute in mf.GetCustomAttributes(true))
-                           if (attribute is StereoTypeAttribute)
+                       //foreach (object attribute in mf.GetCustomAttributes(true))
+                         //  if (attribute is StereoTypeAttribute)
+                         if(mf.IsDefined(typeof(StereoTypeAttribute)))
                                yield return mf;
                }
 
@@ -209,10 +213,11 @@ namespace SV_12_13_1Teste
                    Type obj1 = obj.GetType();
 
                    foreach(string s in cats)
-                       foreach(MemberInfo mf in obj1.GetConstructors())
-                           foreach(object attribute  in mf.GetCustomAttributes(true)){
-                               Pair<string,T> p = new Pair<string,T>();
-                               if (attribute.GetType().GetProperty("Category").GetValue(attribute).Equals(s))
+                       foreach(MemberInfo mf in obj1.GetConstructors()){
+                           //foreach(object attribute  in mf.GetCustomAttributes(true)){
+                           StereoTypeAttribute st = (StereoTypeAttribute)mf.GetCustomAttributes(typeof(StereoTypeAttribute),false)[0];  
+                           Pair<string,T> p = new Pair<string,T>();
+                               if (st.Category.Equals(s))
                                {
                                    p.first = s;
                                    p.second = (T)Activator.CreateInstance(typeof(T));

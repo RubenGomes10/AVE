@@ -149,14 +149,14 @@ namespace Resoluções._2Ficha_13_14
             
             //for fields
             foreach (FieldInfo fi in obj1.GetFields())
-                foreach(object attribute in fi.GetCustomAttributes(true))
-                    if(attribute is DumperValueAttribute)
+                //foreach(object attribute in fi.GetCustomAttributes(true))
+                    if(fi.IsDefined(typeof(DumperValueAttribute),false))
                         yield return new Pair<string, object>(fi.Name, fi.GetValue(obj));
 
             //for Prop
             foreach (PropertyInfo pi in obj1.GetProperties())
-                    foreach(object attribute in pi.GetCustomAttributes(true))
-                        if(attribute is DumperValueAttribute)
+                    //foreach(object attribute in pi.GetCustomAttributes(true))
+                        if(pi.IsDefined(typeof(DumperValueAttribute),false))
                             yield return new Pair<string, object>(pi.Name,pi.GetValue(obj));
         }
 

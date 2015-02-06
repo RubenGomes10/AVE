@@ -1,0 +1,5 @@
+C:\Users\Rúben Gomes\Documents\UNIVERSIDADE\ISEL\5_Semestre\Disciplinas\AVE\Avaliação Teórica\Fichas_Exames\Resoluções\SI_14_15_1Teste\bin\Debug\SI_14_15_1Teste.exe.config
+C:\Users\Rúben Gomes\Documents\UNIVERSIDADE\ISEL\5_Semestre\Disciplinas\AVE\Avaliação Teórica\Fichas_Exames\Resoluções\SI_14_15_1Teste\bin\Debug\SI_14_15_1Teste.exe
+C:\Users\Rúben Gomes\Documents\UNIVERSIDADE\ISEL\5_Semestre\Disciplinas\AVE\Avaliação Teórica\Fichas_Exames\Resoluções\SI_14_15_1Teste\bin\Debug\SI_14_15_1Teste.pdb
+C:\Users\Rúben Gomes\Documents\UNIVERSIDADE\ISEL\5_Semestre\Disciplinas\AVE\Avaliação Teórica\Fichas_Exames\Resoluções\SI_14_15_1Teste\obj\Debug\SI_14_15_1Teste.exe
+C:\Users\Rúben Gomes\Documents\UNIVERSIDADE\ISEL\5_Semestre\Disciplinas\AVE\Avaliação Teórica\Fichas_Exames\Resoluções\SI_14_15_1Teste\obj\Debug\SI_14_15_1Teste.pdb
